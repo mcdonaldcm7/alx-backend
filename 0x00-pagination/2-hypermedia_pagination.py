@@ -25,7 +25,7 @@ import math
 from typing import List
 
 
-def index_range(page, page_size):
+def index_range(page: int, page_size: int) -> tuple(int, int):
     """
     Returns a tuple of size two containing a start index and an end index
     corresponding to the range of indexes to return in a list for those
@@ -79,8 +79,8 @@ class Server:
         """
         Returns page information
         """
-        assert type(page) is int and page > 0
-        assert type(page_size) is int and page_size > 0
+        # assert type(page) is int and page > 0
+        # assert type(page_size) is int and page_size > 0
 
         pages = self.get_page(page, page_size)
         total_pages = math.ceil(len(self.__dataset) / page_size)
