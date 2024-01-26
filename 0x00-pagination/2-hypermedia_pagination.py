@@ -79,8 +79,8 @@ class Server:
         """
         Returns page information
         """
-        # assert type(page) is int and page > 0
-        # assert type(page_size) is int and page_size > 0
+        assert type(page) is int and page > 0
+        assert type(page_size) is int and page_size > 0
 
         pages = self.get_page(page, page_size)
         total_pages = math.ceil(len(self.__dataset) / page_size)
