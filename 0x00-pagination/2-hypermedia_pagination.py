@@ -82,10 +82,18 @@ class Server:
         assert type(page) is int and page > 0
         assert type(page_size) is int and page_size > 0
 
-        pages = self.get_page(page, page_size)
-        total_pages = math.ceil(len(self.__dataset) / page_size)
-        next_page = (page + 1) if (page + 1) <= total_pages else None
+        total_pages = math.ceil(len(self.dataset()) / page_size)
+        next_page = (page + 1) if (page + page_size) <= total_pages else None
         prev_page = (page - 1) if (page - 1) > 0 else None
+
+        if (page + page_size) > total_pages:
+            # indexes = index_range(page, page_size)
+            # if indexes[0] > len(self.__dataset):
+            return {'page_size': 0, 'page': page, 'data': [],
+                    'next_page': None, 'prev_page': prev_page,
+                    'total_pages': total_pages}
+
+        pages = self.get_page(page, page_size)
 
         if len(pages) == 0:
             indexes = index_range(page, page_size)
