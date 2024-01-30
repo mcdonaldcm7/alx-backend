@@ -79,12 +79,13 @@ class Server:
         """
         Returns page information
         """
-        # assert type(page) is int and page > 0
-        # assert type(page_size) is int and page_size > 0
+        assert type(page) is int and page > 0
+        assert type(page_size) is int and page_size > 0
 
         pages = self.get_page(page, page_size)
         total_pages = math.ceil(len(self.__dataset) / page_size)
-        next_page = (page + 1) if (page + 1) < len(self.__dataset) else None
+        next_page = (page + 1) if (page + 1) < (
+                len(self.__dataset) - 1) else None
         prev_page = (page - 1) if (page - 1) > 0 else None
 
         if len(pages) == 0:
