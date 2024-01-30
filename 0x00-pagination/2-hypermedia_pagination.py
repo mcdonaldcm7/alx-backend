@@ -87,8 +87,6 @@ class Server:
         prev_page = (page - 1) if (page - 1) > 0 else None
 
         if (page + page_size) > total_pages:
-            # indexes = index_range(page, page_size)
-            # if indexes[0] > len(self.__dataset):
             return {'page_size': 0, 'page': page, 'data': [],
                     'next_page': None, 'prev_page': prev_page,
                     'total_pages': total_pages}
