@@ -11,7 +11,7 @@ an index.html template that simply outputs “Welcome to Holberton” as page ti
 from flask import Flask, render_template
 
 
-app = Flask(__name__)
+app: Flask(__name__)
 
 
 @app.route("/")
