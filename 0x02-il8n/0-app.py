@@ -9,11 +9,9 @@ an index.html template that simply outputs “Welcome to Holberton” as page ti
 (<title>) and “Hello world” as header (<h1>).
 """
 from flask import Flask, render_template
-from flask_babel import Babel
 
 
 app = Flask(__name__)
-babel = Babel(app)
 
 
 @app.route("/")
