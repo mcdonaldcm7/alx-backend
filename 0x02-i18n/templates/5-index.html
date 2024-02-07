@@ -8,10 +8,10 @@
 			<h1>{{ _('home_header') }}</h1>
 		</header>
 		<p>
-			{% if g.user %}
-			{{ _('logged_in_as')|format(username=g.user.name) }}
+			{% if username %}
+				{{ _('logged_in_as',username=username.get("name")) }}
 			{% else %}
-			{{ _('not_logged_in') }}
+				{{ _('not_logged_in') }}
 			{% endif %}
 		</p>
 	</body>
