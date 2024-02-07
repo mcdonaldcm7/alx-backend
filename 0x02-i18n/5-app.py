@@ -72,8 +72,8 @@ def get_user():
     Fecthes the user details from the mocking database user table
     """
     user_id = request.args.get("login_as")
-    if user_id in users:
-        return user[user_id]
+    if user_id is not None and int(user_id) in users:
+        return users.get(int(user_id))
     return None
 
 
@@ -85,9 +85,6 @@ def get_locale():
     locale = request.args.get('locale')
     if locale in app.config["LANGUAGES"]:
         return locale
-    user = getattr(g, 'user', None)
-    if user is not None:
-        return user.locale
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
@@ -96,4 +93,4 @@ def index() -> str:
     """
     A simple flask app
     """
-    return render_template("4-index.html")
+    return render_template("5-index.html", username=g.user)
