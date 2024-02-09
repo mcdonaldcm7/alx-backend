@@ -99,8 +99,8 @@ def get_timezone():
         if user_timezone is not None:
             pytz.timezone(user_timezone)
             return user_timezone
-        except pytz.exceptions.UnknownTimeZoneError:
-            pass
+    except pytz.exceptions.UnknownTimeZoneError:
+        pass
 
     return app.config["BABEL_DEFAULT_TIMEZONE"]
 
