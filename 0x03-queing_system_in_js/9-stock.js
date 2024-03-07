@@ -37,7 +37,7 @@ async function reserveStockById(itemId, stock=1) {
   for (const item of listProducts) {
     if (item.itemId === Number(itemId)) {
       await client.incrby(`item.${itemId}`, stock);
-        return 'OK'
+      return 'OK';
     }
   }
   return 'Not Found';
@@ -46,9 +46,7 @@ async function reserveStockById(itemId, stock=1) {
 const clientGet = util.promisify(client.get).bind(client);
 
 const getCurrentReservedStockById = async (itemId) => {
-  const reserve = await clientGet(`item.${itemId}`);
-  console.log('Reserve stock for ' + itemId + ' is ' + reserve);
-  return reserve;
+  return await clientGet(`item.${itemId}`);
 }
 
 app.get('/list_products/:itemId', (req, res) => {
@@ -90,6 +88,4 @@ app.get('/reserve_product/:itemId', (req, res) => {
     });
 });
 
-app.listen(port, () => {
-  console.log('...');
-});
+app.listen(port, () => {});
